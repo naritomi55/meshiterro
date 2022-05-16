@@ -3,16 +3,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_images = @user.post_images.page(params[:page]).reverse_order
   end
+  
   def edit
     @user = User.find(params[:id])
   end
-
+  
   def update
     @user = User.find(params[:id])
-    @user = @user.update(user_params)
-    redirect_to user_path
-  end
-
+    @user.update(user_params)
+    redirect_to user_path(@user.id)  end
 
   private
 
